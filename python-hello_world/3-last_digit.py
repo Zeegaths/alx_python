@@ -15,3 +15,5 @@ if (number < 0):
     negative_digit = -last_digit
     if (negative_digit < 0 ):
         print("Last digit of {} is {} and is less than 6 and not 0".format(number, negative_digit))
+    if (negative_digit == 0 ):
+        print("Last digit of {} is {} and is 0".format(number, last_digit))
