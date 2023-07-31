@@ -1,5 +1,8 @@
-for tens_digit in range(10):
-    for ones_digit in range(tens_digit + 1, 10):
-        print("{:02d}".format(tens_digit * 10 + ones_digit), end=", " if ones_digit != 9 else ", ") 
-print()       
-print()
+for x in range(10):
+    for y in range(x + 1, 10):
+        if x < 8:
+            print("{:0d}{:0d}".format(x, y), end=", ")
+        else:
+            print("{:0d}{:0d}".format(x, y))
+            
+     
