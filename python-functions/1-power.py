@@ -1,3 +1,3 @@
 def pow(a, b):
-    pow = a ^ b
-    return pow
+    result = a ^ b
+    return result
