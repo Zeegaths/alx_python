@@ -7,4 +7,3 @@ def add(a, b):
 result = add(a, b)
 print(result)
 
-
