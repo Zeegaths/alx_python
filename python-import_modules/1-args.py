@@ -1,3 +1,4 @@
+__name__= "__main__"
 arguments = []
 index = 0
 while arguments == 0:
