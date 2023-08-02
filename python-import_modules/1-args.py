@@ -1,13 +1,14 @@
-__name__= "__main__"
-arguments = []
-index = 0
-while arguments == 0:
-    print ("." "\n")
-    index = index-1
-    if index == 1:
-         print("{} argument".format(index),end = "\n")
-         print("{}: {}". format({index}, arguments),end = "\n")
-else: 
-    print("{} arguments".format(index),end = "\n")
-    print("{}: {}". format({index}, arguments),end = "\n") 
-   
+import sys
+
+def main(): 
+    arguments = sys.argv[1:]    
+    num_arguments = len(arguments)
+    print(f"{num_arguments}", end='')
+    print(" argument" if num_arguments == 1 else " arguments", end='')   
+    print(":" if num_arguments > 0 else ".")
+
+    for index, argument in enumerate(arguments, start=1):
+        print(f"{index}: {argument}")
+
+if __name__ == "__main__":
+    main()
