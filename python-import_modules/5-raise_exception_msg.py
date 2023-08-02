@@ -1,6 +1,3 @@
 #!/usr/bin/python3
-def exception_msg(message=""):
-    try:
-        exception_msg("{}".format (message))
-    except NameError as ne:
-        print(ne)
+def raise_exception_msg(message = ""):
+    raise NameErrror(message)
