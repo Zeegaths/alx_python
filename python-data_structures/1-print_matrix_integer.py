@@ -1,3 +1,3 @@
 def print_matrix_integer(matrix=[[]]):
     matrix = 3 * 3
-    print (matrix)
+    [str(matrix) for i in range(1, 10)]
