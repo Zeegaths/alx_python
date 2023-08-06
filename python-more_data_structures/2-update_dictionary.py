@@ -1,6 +1,6 @@
 def update_dictionary(a_dictionary, key, value):
-    key == type(str)
-    if key in a_dictionary:
-        a_dictionary[key] = value
-    else:
-        a_dictionary[key] = value
+    a_dictionary[key] = value
+    my_dict = {}
+    update_dictionary(my_dict, key, value)
+    update_dictionary(my_dict, key, value)
+    print(my_dict)
