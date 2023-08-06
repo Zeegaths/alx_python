@@ -1,3 +1,3 @@
 def common_elements(set_1, set_2):
-    common_elements = set_1 & set_2
-    print(common_elements)
+    common_elements_set = set_1 & set_2
+    return common_elements_set
