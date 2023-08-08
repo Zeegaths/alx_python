@@ -1,3 +1,4 @@
+import math
 """ Class module"""
 class Square:
     """ This is a class representing a square"""
@@ -10,6 +11,6 @@ class Square:
          self.__size = size
 
     def area(self, Square):
-         area = self.__size **2
+         area = self.__size ** 2
          print("Area: {}".format(Square.area))
          
