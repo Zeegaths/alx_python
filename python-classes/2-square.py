@@ -11,4 +11,5 @@ class Square:
 
     def area(self, Square):
          area = self.__ **2
-         Square.area()
+         print("Area: {}".format(Square.area))
+         
