@@ -1,7 +1,9 @@
+""" Class module"""
 class Square:
-    def __init__(self, size=0):
-        self.size = size
-
+    """ This is a class representing a square"""
+    def __init__(self, size=0):        
+         """Initializes the size"""
+       
     @property
     def size(self):
         return self.__size
