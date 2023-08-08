@@ -1,4 +1,6 @@
+""" Class module"""
 class Square:
+    """ This is a square"""
     def __init__(self, size=0):
          self.__size = size
          size = type(int)
