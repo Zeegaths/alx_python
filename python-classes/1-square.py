@@ -4,10 +4,12 @@ class Square:
     def __init__(self, size=0):
          self.__size = size
          size = type(int)
-    def sizetype(int):
-         raise TypeError("size must be an integer")
-         if __size < 0:
-             raise ValueError("size must be >= 0")
-         
-            
+         raise TypeError
+    print("size must be an integer")
+    def __init__(self, size=0):
+         if size < 0:
+              raise ValueError
+         print("size must be >= 0")
+    
+        
 
