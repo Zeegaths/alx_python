@@ -16,6 +16,8 @@ class BaseGeometry(metaclass=metaGeometry):
         self.value = value
         self.name = name
         if self.value is not int:
-            raise TypeError("name must be an integer")
+            raise TypeError("{} must be an integer".format(self.name))
         elif self.value <= 0:
-            raise ValueError("name must be greater than 0")
+            raise ValueError("{} must be greater than 0".format(self.name))
+        else:
+            self.value = value
