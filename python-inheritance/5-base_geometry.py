@@ -13,6 +13,8 @@ class BaseGeometry(metaclass=metaGeometry):
         raise Exception("area() is not implemented")
     
     def integer_validator(self, name, value):
+        self.value = value
+        self.name = name
         if value is not int:
             raise TypeError("<name> must be an integer")
         elif value <= 0:
