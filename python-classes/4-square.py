@@ -1,4 +1,3 @@
-""" Class module"""
 class Square:
     """ This is a class representing a square"""
     def __init__(self, size=0):        
@@ -28,10 +27,7 @@ class Square:
               for row in range(self.__size):
                    for column in range(self.__size):
                         print("#", end="")
-                        print()
-                 
-         
-        
-    
-    
-         
+                   print()  # Print a new line after each row
+
+
+
