@@ -20,7 +20,15 @@ class Square:
          
     def area(self):
          return int(self.__size ** 2)
- 
+    
+    def my_print(self):
+         if self.__size == 0:
+              print()
+         else:
+              for row in range(self.__size):
+                   for column in range(self.__size):
+                        print("#",end="")
+         
         
     
     
