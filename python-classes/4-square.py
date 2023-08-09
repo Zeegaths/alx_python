@@ -29,6 +29,7 @@ class Square:
                    for column in range(self.__size):
                         print("#", end="")
                    print()  # Print a new line after each row
+
          
         
     
