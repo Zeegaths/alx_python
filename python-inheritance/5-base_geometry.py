@@ -15,7 +15,7 @@ class BaseGeometry(metaclass=metaGeometry):
     def integer_validator(self, name, value):
         self.value = value
         self.name = name
-        if value is not int:
-            raise TypeError("<name> must be an integer")
-        elif value <= 0:
-            raise ValueError("<name> must be greater than 0")
+        if self.value is not int:
+            raise TypeError("name must be an integer")
+        elif self.value <= 0:
+            raise ValueError("name must be greater than 0")
