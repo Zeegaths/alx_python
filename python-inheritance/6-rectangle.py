@@ -12,7 +12,7 @@ class BaseGeometry(metaclass=metaGeometry):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
-        
+"""rectangle class""" 
 class Rectangle(BaseGeometry):
     """This is the rectangle class"""
     def __init__(self, width, height):
