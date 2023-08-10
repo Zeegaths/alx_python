@@ -8,6 +8,7 @@ class Base:
         else:
             self.__class__.__nb_objects += 1
             self.id = self.__class__.__nb_objects
+from models.base import Base
 """This is the rectangle class"""          
 class Rectangle(Base):
     """This is the getter"""
@@ -43,13 +44,4 @@ class Rectangle(Base):
     def y(self, y):
         self.__y = y
 
-    def __init__(self, width, height, x=0, y=0, id=None):
-         if id is not None:
-            self.id = id        
-         else:
-            self.__class__.__nb_objects += 1
-            self.id = self.__class__.__nb_objects
-            self.__width = width
-            self.__height = height
-            self.__x = x
-            self.__y = y
+   
