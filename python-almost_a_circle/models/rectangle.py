@@ -20,11 +20,12 @@ class Rectangle(Base):
         self.__x = x
         self.__y = y
 
-    """This is the getter"""
+    """This is the width getter"""
     @property
     def width(self):
         return self.__width    
     
+    """width setter"""
     @width.setter
     def width(self, width):
         if not isinstance(width, int):
@@ -34,11 +35,12 @@ class Rectangle(Base):
         self.__width = width
 
     
-    
+    """This is the height getter"""
     @property
     def height(self):
         return self.__height
-    
+        
+    """height setter"""
     @height.setter
     def height(self, height):
         if not isinstance(height, int):
@@ -48,10 +50,12 @@ class Rectangle(Base):
         self.__height = height
         
 
-  
+    """This is the x getter"""
     @property
     def x(self):
         return self.__x
+    
+    """x setter"""
     
     @x.setter
     def x(self,x):
@@ -61,11 +65,12 @@ class Rectangle(Base):
             raise ValueError("x must be >= 0")
         self.__x = x
         
-
+    """This is the y getter"""
     @property
     def y(self):
         return self.__y
     
+    """y setter"""
     @y.setter
     def y(self, y):
         if not isinstance(y, int)
