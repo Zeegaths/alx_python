@@ -9,15 +9,17 @@ class BaseGeometry(metaclass=metaGeometry):
     def __dir__(cls):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
     
-    """rectangle class"""
-class Rectangle(BaseGeometry): 
-    """calling the magic method"""   
-    def __init__(self, width, height):
-        self.__width = width
-        self.__height = height
-     
-    def integer_validator(self, name, value):       
+    def area(self):
+        raise Exception("area() is not implemented")
+    
+    def integer_validator(self, name, value):        
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
+        
+class Rectangle(BaseGeometry):
+    def __init__(self, width, height):
+        self.__width = 0
+        self.__height = 0
+
