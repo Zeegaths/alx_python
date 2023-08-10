@@ -20,8 +20,11 @@ class BaseGeometry(metaclass=metaGeometry):
         
 class Rectangle(BaseGeometry):
     """This is the rectangle class"""
-    def __init__(self, width=0, height=0):
+    def __init__(self, width, height):
         self.__width = width
         self.__height = height
+    def calculate_area(self):
+        return self.___width * self.__height
+
         
 
