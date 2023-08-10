@@ -23,6 +23,8 @@ class Rectangle(BaseGeometry):
     def __init__(self, width, height):
         self.__width = width
         self.__height = height
+    def integer_validator(Rectangle, height, width):
+        return super().integer_validator(height, width)
     def calculate_area(self):
         return self.___width * self.height
 
