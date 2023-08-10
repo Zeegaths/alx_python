@@ -28,6 +28,8 @@ class Rectangle(Base):
     """width setter"""
     @width.setter
     def width(self, width):
+
+        """validation"""
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
         if width <= 0:
@@ -43,6 +45,7 @@ class Rectangle(Base):
     """height setter"""
     @height.setter
     def height(self, height):
+        """validation"""
         if not isinstance(height, int):
             raise TypeError("height must be an integer")
         if height <= 0:
@@ -59,6 +62,7 @@ class Rectangle(Base):
     
     @x.setter
     def x(self,x):
+        """validation"""
         if not isinstance(x, int):
             raise TypeError("x must be an integer")
         if x < 0:
