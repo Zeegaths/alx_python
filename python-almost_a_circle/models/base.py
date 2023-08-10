@@ -6,5 +6,5 @@ class Base:
         if id is not None:
             self.id = id        
         else:
-            __nb_objects = 0
-            self.id += __nb_objects
+            
+            self.id += id
