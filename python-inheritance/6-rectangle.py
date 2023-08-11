@@ -4,10 +4,7 @@ class metaGeometry(type):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
 """This is an empty class""" 
 class BaseGeometry:
-    """This class is empty"""
-    def __dir__(cls):
-        return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
-    
+    """This class is empty"""    
     def area(self):
         raise Exception("area() is not implemented")
     
