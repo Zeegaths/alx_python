@@ -18,3 +18,8 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
+    def __dir__(self):
+        """
+        This function removes the __init_subclass (method) from the default method inherited from the parent class
+        """
+        return [attribute for attribute in super().__dir__() if attribute != "__init_subclass__"]
