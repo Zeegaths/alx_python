@@ -1,7 +1,9 @@
-"""This is a module"""
+"""This is the base moduleclass"""
+
+
 BaseGeometry = _import_('5-base_geometry').BaseGeometry
 
-"""rectangle class"""
+"""This is an empty class"""
 
 
 class Rectangle(BaseGeometry):
