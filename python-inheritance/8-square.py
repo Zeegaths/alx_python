@@ -45,9 +45,9 @@ class Square(Rectangle):
     """Square subclass"""
     def __init__(self, size):
         """calling the validator method"""        
-        super().integer_validator("height", size)        
+        super().integer_validator("size", size)        
         self.__height = size
-    
+        square = 0    
     def area(self):
         """returns the area of the object"""
         return self.__size ** 2
