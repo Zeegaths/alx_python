@@ -32,7 +32,8 @@ class Rectangle(BaseGeometry):
         return self.___width * self.height
 
     def __str__(self):
-         return f"Rectangle:(width={self._Rectangle__width}, height={self._Rectangle__height})" 
+         """str method for printing"""
+         return "[Rectangle] {}/{}".format(self.__width, self.__height) 
     def __dir__(cls):
         """
         This function removes the __init_subclass (method) from the default method inherited from the parent class
