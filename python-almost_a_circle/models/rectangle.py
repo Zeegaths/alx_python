@@ -82,6 +82,9 @@ class Rectangle(Base):
     def display(self):
         """It prints in stdout #"""
         for row in range(self.__height):
-                   for column in range(self.__width):
-                        print("#", end="")
-       
+            for column in range(self.__width):
+                print("#", end="")
+            print()  # Print a new line after each row
+
+                        
+
