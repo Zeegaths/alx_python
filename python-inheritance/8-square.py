@@ -1,8 +1,9 @@
+"""This is an empty class"""
 class metaGeometry(type):
     """This is the metaclass"""
     def __dir__(cls):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
-
+"""This is an empty class"""
 class BaseGeometry(metaclass=metaGeometry):
     """This is an empty class"""
     def __dir__(cls):
