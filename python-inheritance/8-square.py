@@ -47,11 +47,14 @@ class Square(Rectangle):
         """calling the validator method"""        
         super().integer_validator("size", size)        
         self.__height = size
-        square = 0    
+        Square = 0    
     def area(self):
         """returns the area of the object"""
         return self.__size ** 2
     
+    def __str__(self):
+         """str method for printing"""
+         return Square.area 
     def __dir__(cls):
         """
         This function removes the __init_subclass (method) from the default method inherited from the parent class
