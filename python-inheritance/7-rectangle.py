@@ -21,11 +21,14 @@ class BaseGeometry(metaclass=metaGeometry):
 class Rectangle(BaseGeometry):
     """Rectangle subclass"""
     def __init__(self, width, height):
+        """calling the validator method"""
+        super().integer_validator("width", width)
+        super().integer_validator("height", height)
         self.__width = width
         self.__height = height
-    def integer_validator(Rectangle, height, width):
-        return super().integer_validator(height, width)
-    def calculate_area(self):
+    
+    def area(self):
+        """returns the area of the object"""
         return self.___width * self.height
 
     def __str__(self):
