@@ -1,12 +1,6 @@
-"""This is an empty class"""
-
-
 class metaGeometry(type):
     def __dir__(cls):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
-
-    """This is an empty class"""
-
 
 class BaseGeometry(metaclass=metaGeometry):
     """This class is empty"""
@@ -43,9 +37,9 @@ class Rectangle(BaseGeometry):
 
     def __dir__(cls):
         """
-        This function removes the __init_subclass (method) from the default method inherited from the parent class
+        This function removes the __init_subclass (method)
+        from the default method inherited from the parent class
         """
-
         return [attribute for attribute in super().__dir__() if attribute != "__init_subclass__"]
 
 
@@ -68,7 +62,7 @@ class Square(Rectangle):
 
     def __dir__(cls):
         """
-        This function removes the __init_subclass (method) from the default method inherited from the parent class
+        This function removes the __init_subclass (method)
+        from the default method inherited from the parent class
         """
-
         return [attribute for attribute in super().__dir__() if attribute != "__init_subclass__"]
