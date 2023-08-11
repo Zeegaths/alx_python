@@ -51,3 +51,11 @@ class Square(Rectangle):
     def area(self):
         """returns the area of the object"""
         return self.__height ** 2
+    
+    def __dir__(cls):
+        """
+        This function removes the __init_subclass (method) from the default method inherited from the parent class
+        """
+
+        return [attribute for attribute in super().__dir__() if attribute != "__init_subclass__"]
+
