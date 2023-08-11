@@ -14,6 +14,9 @@ class BaseGeometry:
             raise ValueError(f"{name} must be greater than 0")
         
 class Rectangle(BaseGeometry):
+    """remove suclass from output"""
+    def __dir__(cls):
+        return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
     """Rectangle subclass"""
     def __init__(self, width, height):
         """calling the validator method"""
