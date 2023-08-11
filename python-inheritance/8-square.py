@@ -1,9 +1,15 @@
 """This is an empty class"""
+
+
 class metaGeometry(type):
     """This is the metaclass"""
     def __dir__(cls):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
+
+
 """This is an empty class"""
+
+
 class BaseGeometry(metaclass=metaGeometry):
     """This is an empty class"""
     def __dir__(cls):
@@ -19,6 +25,7 @@ class BaseGeometry(metaclass=metaGeometry):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
+
 
 class Rectangle(BaseGeometry):
     """Rectangle subclass"""
@@ -44,6 +51,7 @@ class Rectangle(BaseGeometry):
         from the default method inherited from the parent class
         """
         return [attribute for attribute in super().__dir__() if attribute != "__init_subclass__"]
+
 
 class Square(Rectangle):
     """Square subclass"""
