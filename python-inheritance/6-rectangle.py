@@ -19,13 +19,14 @@ class BaseGeometry(metaclass=metaGeometry):
             raise ValueError(f"{name} must be greater than 0")
         
 class Rectangle(BaseGeometry):
-    """This is the rectangle class"""
+    """This is the rectangle class"""    
     def __init__(self, width, height):
+        """calling the validator method"""
+        super().integer_validator("width", width)
+        super().integer_validator("height", height)
         self.__width = width
         self.__height = height
+    
         
-    def calculate_area(self):
-        return self.___width * self.height
-
         
 
