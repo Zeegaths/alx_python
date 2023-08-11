@@ -18,7 +18,7 @@ class BaseGeometry(metaclass=metaGeometry):
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
         
-class Rectangle(BaseGeometry):
+class Rectangle(BaseGeometry(metaclass=metaGeometry)):
     """Rectangle subclass"""
     def __init__(self, width, height):
         """calling the validator method"""
