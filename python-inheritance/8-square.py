@@ -43,14 +43,14 @@ class Rectangle(BaseGeometry):
 
 class Square(Rectangle):
     """Square subclass"""
-    def __init__(self, height):
+    def __init__(self, size):
         """calling the validator method"""        
-        super().integer_validator("height", height)        
-        self.__height = height
+        super().integer_validator("height", size)        
+        self.__height = size
     
     def area(self):
         """returns the area of the object"""
-        return self.__height ** 2
+        return self.__size ** 2
     
     def __dir__(cls):
         """
