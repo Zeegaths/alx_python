@@ -81,10 +81,14 @@ class Rectangle(Base):
     """This is a public method"""
     def display(self):
         """It prints in stdout #"""
-        for row in range(self.__height):
-            for column in range(self.__width):
+        for _ in range(self.__y):
+            print()
+        for _ in range(self.__height):
+            for _ in range(self.__x):
+                print(" ", end="")
+            for _ in range(self.__width):
                 print("#", end="")
-            print()  # Print a new line after each row
+            print()
 
     def __str__(self):
         """"""
