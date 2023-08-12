@@ -13,31 +13,15 @@ class Square(Rectangle):
         self.size = size       
     """str method for printing"""
 
-    def __str__(self, Square):
+    def __str__(self):
         """defines the format for returning the square attributes"""
-        return "[Square] ({}) {}/{} - {}/{}".format(self.id, self.x, self.size)
-def update(self, *args, **kwargs):
-        """These are the arguments
-        """
-        if len(args) >= 1:
-            self.id = args[0]
-        if len(args) >= 2:
-            self.width = args[1]
-        if len(args) >= 3:
-            self.height = args[2]
-        if len(args) >= 4:
-            self.x = args[3]
-        if len(args) >= 5:
-            self.y = args[4]
+        return "[Square] ({}) {}/{} - {}/{}".format(self.id, x, y, width)
 
-        if kwargs:
-            if "id" in kwargs:
-                self.id = kwargs["id"]
-            if "width" in kwargs:
-                self.width = kwargs["width"]
-            if "height" in kwargs:
-                self.height = kwargs["height"]
-            if "x" in kwargs: 
-                self.x = kwargs["x"]  
-            if "y" in kwargs: 
-                self.y = kwargs["y"]  
+    @property
+    def square(size):
+        return size.__x
+
+    @square.setter
+    def square(self, value):
+        self.__size = value
+
