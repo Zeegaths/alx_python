@@ -2,8 +2,11 @@
 from rectangle import Rectangle
 
 """This is the square class"""
+
+
 class Square(Rectangle):
     """__init method calls the function"""
+
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(id)
         self.size = size
