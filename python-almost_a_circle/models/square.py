@@ -9,10 +9,8 @@ class Square(Rectangle):
 
     def __init__(self, size, x=0, y=0, id=None):
         """calling the super class using the logic of the Rectangle"""
-        super().__init__(id)
-        self.size = self.width, self.height
-        self.x = x
-        self.y = y
+        super().__init__(size, size, x, y, id)
+        self.size = size       
     """str method for printing"""
 
     def __str__(self):
