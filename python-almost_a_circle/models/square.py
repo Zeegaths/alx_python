@@ -18,10 +18,10 @@ class Square(Rectangle):
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.size)
 
     @property
-    def size(self):
-        return self.width
+    def square(size):
+        return size.__x
 
-    @size.setter
+    @square.setter
     def square(self, value):
         """validation"""
         if not isinstance(value, int):
