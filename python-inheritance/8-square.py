@@ -1,34 +1,7 @@
-"""This is the BaseGeometry moduleempty class
+"""This is the Rectangle module
 """
 
-BaseGeometry = __import__('5-base_geometry').BaseGeometry
-
-
-class Rectangle(BaseGeometry):
-    """Rectangle subclass"""
-
-    def __init__(self, width, height):
-        """Initializes a Rectangle instance"""
-        super().integer_validator("width", width)
-        super().integer_validator("height", height)
-        self.__width = width
-        self.__height = height
-
-    def area(self):
-        """Calculates the area of the rectangle"""
-        return self.__width * self.__height
-
-    def __str__(self):
-        """Returns a formatted string representation of the rectangle"""
-        return "[Rectangle] {}/{}".format(self.__width, self.__height)
-
-    def __dir__(cls):
-        """
-        Removes the __init_subclass (method)
-        from the default method inherited from the parent class
-        """
-        return [attribute for attribute in super().__dir__()
-                if attribute != "__init_subclass__"]
+Rectangle = __import__('7-rectangle').Rectangle
 
 
 class Square(Rectangle):
