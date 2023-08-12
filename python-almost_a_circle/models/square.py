@@ -2,6 +2,8 @@
 from rectangle import Rectangle
 
 """This is the square class inheriting from the rectangle"""
+
+
 class Square(Rectangle):
     """__init method calls the function"""
 
