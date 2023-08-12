@@ -1,7 +1,7 @@
-# Import the Rectangle module
+"""Import the Rectangle module"""
 from rectangle import Rectangle
-
-# Define the Square class, which inherits from the Rectangle class
+"""
+Define the Square class, which inherits from the Rectangle class"""
 class Square(Rectangle):
     """
     This is the Square class, inheriting from the Rectangle class.
