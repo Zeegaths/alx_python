@@ -17,5 +17,17 @@ class Square(Rectangle):
         """defines the format for returning the square attributes"""
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.size)
 
-   
+    @property
+    def square(size):
+        return size.__x
+
+    @square.setter
+    def square(self, value):
+        """validation"""
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
+        self.__height = value
 
