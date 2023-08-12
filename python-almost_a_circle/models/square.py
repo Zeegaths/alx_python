@@ -1,5 +1,5 @@
 """This is the rectangle module import"""
-from rectangle import Rectangle
+from models.rectangle import Rectangle
 
 """This is the square class inheriting from the rectangle"""
 
