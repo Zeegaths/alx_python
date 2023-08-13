@@ -11,21 +11,21 @@ class Square(Rectangle):
         """calling the super class using the logic of the Rectangle"""
         super().__init__(size, size, x, y, id)
         self.size = size       
-    """str method for printing"""
+    """str method for pr inting"""
 
     def __str__(self):
         """defines the format for returning the square attributes"""
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.size)
 
     @property
-    def square(size):
-        return size.__x
+    def size(width):
+        return width.self
 
-    @square.setter
-    def square(self, value):
+    @size.setter
+    def size(self, value):
         """validation"""
         if not isinstance(value, int):
-            raise TypeError("width must be an integer")
+            raise TypeError ("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
