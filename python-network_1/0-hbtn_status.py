@@ -2,5 +2,7 @@
 """
 import requests
 response = requests.get("https://alu-intranet.hbtn.io/status")
-print("type: {}".format(type(response.text)))  
-print("content: {}".format(response.text)) 
+print("Body response:")
+print("\t- type:", type(response.text))
+print("\t- content:", response.text)
+print(f"\n({len(response.text)} chars long)")
