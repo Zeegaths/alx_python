@@ -14,6 +14,6 @@ if __name__ == "__main__":
         json = response.json()
         if json:
             get_email = json.get("form")["email"]
-            print("Your email is:", get_email)
+            print("Email:", get_email)
     except ValueError as e:
         print(e)
