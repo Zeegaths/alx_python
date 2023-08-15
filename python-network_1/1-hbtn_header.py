@@ -2,15 +2,23 @@
 import requests
 import sys
 
-# You should specify the URL you're testing against
-url = "http://0.0.0.0:5050"  # Update this to the actual URL you want to test
+def main():
+    "receive and process the URL"
+    url = input("Enter the URL: ")  # Get the URL from user input
 
-try:
-    response = requests.get(url)
-    if response.status_code == 200:
-        x_request_id = response.headers.get('X-Request-Id')
-        print(f"X-Request-Id: {x_request_id}")
-    else:
-        print(f"Request failed with status code: {response.status_code}")
-except requests.RequestException as e:
-    print(f"An error occurred: {e}")
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            headers = response.headers
+            x_request_id = headers.get('X-Request-Id')
+            if x_request_id:
+                print(f"X-Request-Id: {x_request_id}")
+            else:
+                print("X-Request-Id header not found in the response headers.")
+        else:
+            print(f"Request failed with status code: {response.status_code}")
+    except requests.RequestException as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
