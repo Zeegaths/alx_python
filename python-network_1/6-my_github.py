@@ -17,7 +17,7 @@ def main():
             else:
                 print("User ID not found in the response.")
         else:
-            return None
+            print("None") 
     except requests.RequestException as e:
         print(f"An error occurred: {e}")
 
