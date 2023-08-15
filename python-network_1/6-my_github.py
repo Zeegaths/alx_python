@@ -13,7 +13,7 @@ def main():
             user_data = response.json()
             user_id = user_data.get("id")
             if user_id is not None:
-                print(f"User ID: {user_id}")
+                print(f"{user_id}")
             else:
                 print("User ID not found in the response.")
         else:
