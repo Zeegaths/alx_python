@@ -9,8 +9,7 @@ def main():
 
     try:
         response = requests.post(url, data=payload)
-        if response.status_code == 200:
-            print("Response Body:")
+        if response.status_code == 200:           
             print(response.text)
         else:
             print(f"Request failed with status code: {response.status_code}")
