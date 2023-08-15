@@ -4,3 +4,4 @@ import sys
 
 r = requests.get("https://intranet.hbtn.io")
 r.headers['X-Request-Id']
+print("{r.headers}")
