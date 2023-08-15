@@ -2,18 +2,26 @@
 import requests
 import sys
 
-
-if __name__ == "__main__":
+def main():
     url = sys.argv[1]
     email = sys.argv[2]
-    pyload = {
-        "email": email
-    }
-    response = requests.post(url, data=pyload)
+    payload = {"email": email}
+    
     try:
-        json = response.json()
-        if json:
-            get_email = json.get("form")["email"]
-            print("Email:", get_email)
-    except ValueError as e:
-        print(e)
+        response = requests.post(url, data=payload)  # Use either data or json depending on server's API
+        if response.status_code == 200:
+            response_text = response.text
+            print("Response Body:")
+            print(response_text)
+        else:
+            print(f"Request failed with status code: {response.status_code}")
+    except requests.RequestException as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
