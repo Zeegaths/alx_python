@@ -3,5 +3,5 @@ import requests
 import sys
 
 r = requests.get("https://intranet.hbtn.io")
-r.headers['X-Request-Id']
-print("{r.headers}")
+x_request_id = r.headers.get('X-Request-Id')
+print("{x_request_id}")
