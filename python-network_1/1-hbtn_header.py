@@ -2,5 +2,6 @@
 import requests
 import sys
 
-r = requests.get("https://intranet.hbtn.io")
+url = input("Enter a URL")
+r = requests.get("url")
 r.headers.get('X-Request-Id')
