@@ -20,7 +20,7 @@ def func_1():
             if x_request_id:
                 print(f"{x_request_id}")
             else:
-                print("X-Request-Id not contained in the response header.")
+                None
         else:
             print(f"Request failed: {response.status_code}")
     # catch any exceptions that might arise
