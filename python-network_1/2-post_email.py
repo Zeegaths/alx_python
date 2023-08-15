@@ -8,7 +8,7 @@ def main():
     payload = {"email": email}
     
     try:
-        response = requests.post(url, data=payload)  # Use either data or json depending on server's API
+        response = requests.post(url, data=payload)  
         if response.status_code == 200:
             response_text = response.text
             print("Response Body:")
