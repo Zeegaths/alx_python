@@ -4,7 +4,7 @@ import sys
 
 def main():
     "receive and process the URL"
-    url = input("Enter the URL: ")  # Get the URL from user input
+    url = "https://alu-intranet.hbtn.io/status"  # Get the URL from user input
 
     try:
         response = requests.get(url)
