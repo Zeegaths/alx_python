@@ -18,7 +18,7 @@ def func_1():
         if response.status_code == 200:
             x_request_id = response.headers.get('X-Request-Id')
             if x_request_id:
-                print(f"X-Request-Id: {x_request_id}")
+                print(f"{x_request_id}")
             else:
                 print("X-Request-Id not contained in the response header.")
         else:
