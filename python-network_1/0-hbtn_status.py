@@ -3,7 +3,7 @@
 import requests
 url = "https://alu-intranet.hbtn.io/status"
 response = requests.get(url)
-
+"""Modifying the output"""
 if response.status_code == 200:
     data = response.json()
     print("Body response:")
