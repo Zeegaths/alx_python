@@ -27,7 +27,7 @@ if __name__ == "__main__":
         cur = db.cursor()
 
         # Execute the SQL query to retrieve states starting with "N"
-        cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
+        cur.execute("SELECT * FROM states WHERE name LIKE 'N%' COLLATE utf8mb4_bin ORDER BY states.id")
 
         # Fetch and display the results
         results = cur.fetchall()
