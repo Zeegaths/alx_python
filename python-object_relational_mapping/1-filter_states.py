@@ -5,7 +5,9 @@ import sys
 if __name__ == "__main__":
     # Check for the correct number of command-line arguments
     if len(sys.argv) != 4:
-        print("Usage: {} <MySQL username> <MySQL password> <Database name>".format(sys.argv[0]))
+        print("Usage: {} <MySQL username>"
+              "<MySQL password>"
+              "<Database name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Extract command-line arguments
@@ -27,7 +29,9 @@ if __name__ == "__main__":
         cur = db.cursor()
 
         # Execute the SQL query to retrieve states starting with "N"
-        cur.execute("SELECT * FROM states WHERE name LIKE 'N%' COLLATE utf8mb4_bin ORDER BY states.id")
+        cur.execute("SELECT * FROM states "
+                    "WHERE name LIKE 'N%' COLLATE utf8mb4_bin "
+                    "ORDER BY states.id")
 
         # Fetch and display the results
         results = cur.fetchall()
