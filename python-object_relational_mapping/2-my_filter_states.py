@@ -32,8 +32,10 @@ if __name__ == "__main__":
         cur = db.cursor()
 
         # Execute the SQL query to retrieve states matching the provided name
-        query = "SELECT * FROM states WHERE name LIKE %s COLLATE utf8mb4_bin " \
+        query = (
+            "SELECT * FROM states WHERE name LIKE %s COLLATE utf8mb4_bin "
             "ORDER BY states.id"
+        )
         cur.execute(query, (state_name,))
 
         # Fetch and display the results
