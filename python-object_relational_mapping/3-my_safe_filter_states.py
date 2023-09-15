@@ -5,7 +5,9 @@ import sys
 if __name__ == "__main__":
     # Check for the correct number of command-line arguments
     if len(sys.argv) != 5:
-        print("Usage: {} <MySQL username> <MySQL password> <Database name> <State name>".format(sys.argv[0]))
+        print("Usage: {} <MySQL username>"
+              "<MySQL password> <Database name>"
+              "<State name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Extract command-line arguments
@@ -28,7 +30,8 @@ if __name__ == "__main__":
         cur = db.cursor()
 
         # Execute the SQL query with a parameterized query to prevent SQL injection
-        query = "SELECT * FROM states WHERE name LIKE %s COLLATE utf8mb4_bin ORDER BY states.id"
+        query = "SELECT * FROM states"
+        "WHERE name LIKE %s COLLATE utf8mb4_bin ORDER BY states.id"
         cur.execute(query, (state_name,))
 
         # Fetch and display the results
