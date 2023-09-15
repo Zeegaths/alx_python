@@ -26,8 +26,13 @@ if __name__ == "__main__":
         # Create a cursor object
         cur = db.cursor()
 
-        # Execute the SQL query to retrieve all cities sorted by cities.id
-        query = "SELECT id, name, state FROM cities ORDER BY id"
+        # Execute the SQL query to retrieve cities and their associated states
+        query = """
+            SELECT cities.id, cities.name, states.name
+            FROM cities
+            JOIN states ON cities.state_id = states.id
+            ORDER BY cities.id
+        """
         cur.execute(query)
 
         # Fetch and display the results
