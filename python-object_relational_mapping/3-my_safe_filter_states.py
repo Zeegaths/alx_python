@@ -28,7 +28,7 @@ if __name__ == "__main__":
         # Create a cursor object
         cur = db.cursor()
 
-        # Execute the SQL query with a parameterized query to prevent SQL injection
+        # Execute the SQL query
         query = ("SELECT * FROM states "
                  "WHERE name LIKE %s COLLATE utf8mb4_bin "
                  "ORDER BY states.id")
