@@ -27,13 +27,14 @@ if __name__ == "__main__":
         cur = db.cursor()
 
         # Execute the SQL query to retrieve all cities sorted by cities.id
-        query = "SELECT * FROM cities ORDER BY cities.id"
+        query = "SELECT id, name, state FROM cities ORDER BY id"
         cur.execute(query)
 
         # Fetch and display the results
         results = cur.fetchall()
         for row in results:
             print(row)
+
 
         # Close the cursor and the database connection
         cur.close()
