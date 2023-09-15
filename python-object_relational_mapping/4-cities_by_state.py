@@ -35,7 +35,6 @@ if __name__ == "__main__":
         for row in results:
             print(row)
 
-
         # Close the cursor and the database connection
         cur.close()
         db.close()
