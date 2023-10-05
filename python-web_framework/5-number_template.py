@@ -13,15 +13,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/number_template/<int:n>', strict_slashes=False)
-def render_template_with_number(n):
-    if isinstance(n, int):
-        return render_template('5-number_template.html', n=n)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-
-
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
     """Route to display 'Hello HBNB!'."""
@@ -45,13 +36,17 @@ def python_route(text='is_cool'):
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def number_route(n):
-    """Route to display '{} is a number' only if n is an integer."""
+    """Route to display 'n is a number' only if n is an integer."""
     return '{} is a number'.format(n)
 
+#Define a route for "/number_template/<n> with stict_slashes=false"
+
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def number_template_route(n):
-    """Route to display an HTML page with 'Number: n' in an H1 tag inside the BODY tag. Displays only if n is an integer."""
-    return render_template('5-number_template.html', n=n)
+def number_template(n):
+    if isinstance(n, int):
+        return render_template('5-number.html', n=n)
+    else:
+        return "", 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
