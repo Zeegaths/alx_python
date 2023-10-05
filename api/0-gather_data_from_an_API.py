@@ -21,7 +21,7 @@ def get_employee_info(employee_id):
         # Display progress
         print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
 
-        # Display completed task titles
+        # Display completed task titles with "Task X: TASK_TITLE" format
         task_number = 1
         for task in todos_data:
             if task['completed']:
