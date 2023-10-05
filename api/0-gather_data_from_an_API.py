@@ -1,22 +1,14 @@
 import requests
 import sys
 
+
 def get_employee_info(employee_id):
-    """
-    Retrieve and display information about an employee's TODO list progress.
-
-    Args:
-        employee_id (int): The ID of the employee.
-
-    Returns:
-        None
-    """
     try:
         # Fetch employee details
         employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
         employee_response = requests.get(employee_url)
         employee_data = employee_response.json()
-        employee_name = employee_data.get('name')
+        employee_name = employee_data['name']
 
         # Fetch employee's TODO list
         todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
@@ -25,19 +17,21 @@ def get_employee_info(employee_id):
 
         # Calculate TODO list progress
         total_tasks = len(todos_data)
-        completed_tasks = sum(1 for task in todos_data if task.get('completed'))
+        completed_tasks = sum(1 for task in todos_data if task['completed'])
 
         # Display progress
-        print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+        print(
+            f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
 
         # Display completed task titles
-        for idx, task in enumerate(todos_data, start=1):
-            if task.get('completed'):
-                print(f"\tTask {idx}: {task.get('title')}")
+        for task in todos_data:
+            if task['completed']:
+                print(f"    {task['title']}")
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -47,4 +41,6 @@ if __name__ == "__main__":
     try:
         employee_id = int(sys.argv[1])
         get_employee_info(employee_id)
-    except ValueError
+    except ValueError:
+        print("Employee ID must be an integer.")
+        sys.exit(1)
