@@ -20,11 +20,13 @@ def get_employee_info(employee_id):
 
         # Display progress
         print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
-        
+
         # Display completed task titles
+        task_number = 1
         for task in todos_data:
             if task['completed']:
-                print(f"    {task['title']}")
+                print(f"    Task {task_number}: {task['title']}")
+                task_number += 1
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
