@@ -26,14 +26,14 @@ def fetch_employee_info(employee_id):
         # Display titles of completed tasks
         for task in completed_tasks:
             print(f"\t{task['title']}")
-    
+
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python script.py EMPLOYEE_ID")
+        print("Usage: python 0-gather_data_from_an_API.py EMPLOYEE_ID")
         sys.exit(1)
     
     try:
