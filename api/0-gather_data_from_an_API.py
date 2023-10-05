@@ -21,11 +21,13 @@ def fetch_employee_info(employee_id):
         total_tasks = len(todos_data)
         completed_count = len(completed_tasks)
         
-        print(f"Employee {employee_name} is done with tasks ({completed_count}/{total_tasks}):", end="")  # Adjust formatting here
+        print(f"Employee {employee_name} is done with tasks ({completed_count}/{total_tasks}): ", end="")  # Adjust formatting here
         
         # Display titles of completed tasks
-        for task in completed_tasks:
-            print(f"\n\t{task['title']}")  # Add a newline before each task title
+        for i, task in enumerate(completed_tasks):
+            if i > 0:
+                print(", ", end="")  # Add a comma and space between task titles
+            print(task['title'], end="")  # Print task title without newline
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
