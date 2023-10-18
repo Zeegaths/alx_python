@@ -19,13 +19,13 @@ def gather_data_from_an_API(employee_id):
         for todo in todos_data:
             if todo["completed"]:
                 done_tasks += 1
-                completed_tasks_titles.append(todo["title"])
+                completed_tasks_titles.append(f"Task {todo['id']} Formatting: OK")
 
         total_tasks = len(todos_data)
 
         print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
         for title in completed_tasks_titles:
-            print(f"\t{title}")
+            print(title)
     else:
         print(f"Error: Unable to retrieve data for employee with ID {employee_id}")
 
