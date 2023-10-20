@@ -1,34 +1,38 @@
 import requests
 import sys
 
-def get_employee_todo_progress(employee_id):
-    # Define API endpoints
+def gather_data_from_an_API(employee_id):
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
 
-    # Fetch employee details
-    response_user = requests.get(user_url)
-    employee_data = response_user.json()
-    employee_name = employee_data.get("name")
+    user_response = requests.get(user_url)
+    todos_response = requests.get(todos_url)
 
-    # Fetch TODO list
-    response_todos = requests.get(todos_url)
-    todo_data = response_todos.json()
+    if user_response.status_code == 200 and todos_response.status_code == 200:
+        user_data = user_response.json()
+        todos_data = todos_response.json()
 
-    # Calculate progress
-    total_tasks = len(todo_data)
-    completed_tasks = sum(1 for task in todo_data if task["completed"])
+        employee_name = user_data["name"]
+        done_tasks = 0
+        completed_tasks_titles = []
 
-    # Display progress
-    print(f"Employee {employee_name} is done with tasks ({completed_tasks}/{total_tasks}):")
-    for task in todo_data:
-        if task["completed"]:
-            print(f"\t{task['title']}")
+        for todo in todos_data:
+            if todo["completed"]:
+                done_tasks += 1
+                
+                completed_tasks_titles.append(todo["title"])
+
+        total_tasks = len(todos_data)
+        indent = '     '
+        print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
+        for title in completed_tasks_titles:
+            print(f"\{indent}{title}")
+    else:
+        print(f"Error: Unable to retrieve data for employee with ID {employee_id}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python api1.py <employee_id>")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    get_employee_todo_progress(employee_id)
+        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+    else:
+        employee_id = int(sys.argv[1])
+        gather_data_from_an_API(employee_id)
