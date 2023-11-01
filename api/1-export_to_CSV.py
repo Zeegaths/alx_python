@@ -1,26 +1,40 @@
-'''
-This module export content from an api into
-a csv file defined on creation
-    return : csv
-'''
-import csv
-import os
+import json
 import requests
+import csv
 import sys
 
-user_id = str(sys.argv[1])
+def user_info(user_id):
+    todo_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
+    req = requests.get(todo_url)
+    results = json.loads(req.text)
 
-user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
-todo_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-    user_id)
+    completed_tasks = []
+    user_name = ''
 
-user_data = requests.get(user_url).json()
-todo_data = requests.get(todo_url).json()
+    for result in results:
+        if result['completed'] == True:
+            completed_tasks.append(result)
 
-filename = "{}.csv".format(user_id)
+        if not user_name:
+            users = requests.get(f'https://jsonplaceholder.typicode.com/users/{result["userId"]}')
+            user = json.loads(users.text)
+            user_name = user['name']
 
-with open(filename, 'w', newline='') as file:
-    writter = csv.writer(file, quoting=csv.QUOTE_ALL)
-    for task in todo_data:
-        writter.writerow([user_id, str(user_data['username']),
-                         task['completed'], task['title']])
+    print(f'Employee {user_name} is done with tasks ({len(completed_tasks)}/{len(results)}):')
+
+    for task in completed_tasks:
+        print(f'\t{task["title"]}')
+
+    # Write the tasks to a CSV file
+    if completed_tasks:
+        with open(f'{user_id}.csv', 'w', newline='') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+            for task in completed_tasks:
+                csv_writer.writerow([user_id, user_name, task['completed'], task['title'])
+
+try:
+    user_id = int(sys.argv[1])
+    user_info(user_id)
+except FileNotFoundError:
+    print("CSV file not found.")
