@@ -3,40 +3,36 @@ import requests
 import csv
 import sys
 
-todo_url = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}/todos'
+def user_info(user_id):
+    todo_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
+    req = requests.get(todo_url)
+    results = json.loads(req.text)
 
-req = requests.get(todo_url)
-results = json.loads(req.text)
+    completed_tasks = []
+    user_name = ''
 
-task = 0
-completed_task_title = []
-user_name = ''
-user_id = sys.argv[1]
+    for result in results:
+        if result['completed'] == True:
+            completed_tasks.append(result)
 
-# Create a list to store the tasks
-tasks = []
+        if not user_name:
+            users = requests.get(f'https://jsonplaceholder.typicode.com/users/{result["userId"]}')
+            user = json.loads(users.text)
+            user_name = user['name']
 
-for result in results:
-    if result['completed'] == True:
-        task = task + 1
-        completed_task_title.append(result['title'])
+    print(f'Employee {user_name} is done with tasks ({len(completed_tasks)}/{len(results)}):')
 
-    users = requests.get(f'https://jsonplaceholder.typicode.com/users/{result["userId"]}')
-    user = json.loads(users.text)
-    user_name = user['name']
+    for task in completed_tasks:
+        print(f'\t{task["title"]}')
 
-    # Append task data to the tasks list
-    tasks.append([user_id, user_name, result['completed'], result['title']])
+    # Write the tasks to a CSV file
+    if completed_tasks:
+        with open(f'{user_id}.csv', 'w', newline='') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+            for task in completed_tasks:
+                csv_writer.writerow([user_id, user_name, task['completed'], task['title']])
 
-print(f'Employee {user_name} is done with tasks({task}/{len(results)}):')
-for finished_task in completed_task_title:
-    print(f'\t{finished_task}')
+user_id = int(sys.argv[1])
+user_info(user_id)
 
-# Export the tasks to a CSV file
-csv_file_name = f'{user_id}.csv'
-with open(csv_file_name, mode='w', newline='') as csv_file:
-    csv_writer = csv.writer(csv_file)
-    csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-    csv_writer.writerows(tasks)
-
-print(f'Tasks data has been exported to {csv_file_name}')
