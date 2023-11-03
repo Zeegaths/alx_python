@@ -1,57 +1,35 @@
-'''
-A python script that uses the REST API for a given employee ID
-returns information about his/her TODO list progress.
-'''
+#!/usr/bin/python3
+"""
+Python script to export data to a JSON file.
+"""
 
 import json
 import requests
 import sys
 
 
-def data_to_json(user_id):
-    """
-    Fetches the employee's details and TODO list using the
-    provided API endpoints,
-    exports the informationto a JSON file.
+def export_to_CSV(user_id):
+    employee_name = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+    ).json()["username"]
+    tasks = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
+    ).json()
 
-    >>> data_to_json(-1)
-    Traceback (most recent call last):
-        ...
-    ValueError: n must be >= 0
-    
-    Parameters:
-    - employee_id (int): The ID of the employee.
+    tasks_data = {str(user_id): []}
 
-    Returns:
-    None
-    """
-    # format url with input from user
-    user_url = 'https://jsonplaceholder.typicode.com/users/{}'\
-    .format(user_id)
-    todo_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'\
-    .format(user_id)
-
-    # request data frm todo and user api
-    user_data = requests.get(user_url).json()
-    todo_data = requests.get(todo_url).json()
-
-    # creat a json data from the todo and user object
-    json_data = {
-        user_id : [ {
-                "task":task['title'], "completed":task['completed'],
-                "username":user_data['username'],
+    for task in tasks:
+        tasks_data[str(user_id)].append(
+            {
+                "task": task["title"],
+                "completed": task["completed"],
+                "username": employee_name,
             }
-            for task in todo_data
-        ]
-    }
+        )
 
-    # Write to JSON file name filename
-    filename = f"{user_id}.json"
+    with open(str(user_id) + ".json", "w", encoding="UTF8", newline="") as f:
+        json.dump(tasks_data, f)
 
-    # open the file and overwrite it content with w
-    with open(filename, 'w') as file:
-        json.dump(json_data, file, indent=2)
 
-# function call
-if __name__=='__main__':
-    data_to_json(sys.argv[1])
+if __name__ == "__main__":
+    export_to_CSV(sys.argv[1])

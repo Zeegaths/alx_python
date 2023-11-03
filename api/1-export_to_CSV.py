@@ -1,26 +1,35 @@
-'''
-This module export content from an api into
-a csv file defined on creation
-    return : csv
-'''
-import csv
-import os
+#!/usr/bin/python3
+"""
+Python script to export data to a JSON file.
+"""
+
+import json
 import requests
 import sys
 
-user_id = str(sys.argv[1])
 
-user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
-todo_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-    user_id)
+def export_to_CSV(user_id):
+    employee_name = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+    ).json()["username"]
+    tasks = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
+    ).json()
 
-user_data = requests.get(user_url).json()
-todo_data = requests.get(todo_url).json()
+    tasks_data = {str(user_id): []}
 
-filename = "{}.csv".format(user_id)
+    for task in tasks:
+        tasks_data[str(user_id)].append(
+            {
+                "task": task["title"],
+                "completed": task["completed"],
+                "username": employee_name,
+            }
+        )
 
-with open(filename, 'w', newline='') as file:
-    writter = csv.writer(file, quoting=csv.QUOTE_ALL)
-    for task in todo_data:
-        writter.writerow([user_id, str(user_data['username']),
-                         task['completed'], task['title']])
+    with open(str(user_id) + ".json", "w", encoding="UTF8", newline="") as f:
+        json.dump(tasks_data, f)
+
+
+if __name__ == "__main__":
+    export_to_CSV(sys.argv[1])
