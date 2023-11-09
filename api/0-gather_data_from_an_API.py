@@ -1,31 +1,30 @@
-'''
-This module get data from todo api and write the data to a csv file
-'''
+#!/usr/bin/python3
+"""For a given employee ID, returns information about
+their TODO list progress"""
 
-import json
 import requests
 import sys
 
+if __name__ == "__main__":
 
-todo_url = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}/todos'
+    userId = sys.argv[1]
+    user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+                        .format(userId))
 
+    name = user.json().get('name')
 
-req = requests.get(todo_url)
-results = json.loads(req.text)
+    todos = requests.get('https://jsonplaceholder.typicode.com/todos')
+    totalTasks = 0
+    completed = 0
 
-task = 0
-completed_task_title = []
-user_name = ''
-for result in results:
-    if result['completed'] == True:
-        task = task + 1
-        completed_task_title.append(result['title'])
-    users = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'.format(result['userId']))
-    user = json.loads(users.text)
-    user_name = user['name']
+    for task in todos.json():
+        if task.get('userId') == int(userId):
+            totalTasks += 1
+            if task.get('completed'):
+                completed += 1
 
+    print('Employee {} is done with tasks({}/{}):'
+          .format(name, completed, totalTasks))
 
-print('Employee {} is done with tasks({}/{}):'.format(user_name, task, len(results)))
-for finished_task in completed_task_title:
-    print('\t {}'.format(finished_task))
+    print('\n'.join(["\t " + task.get('title') for task in todos.json()
+          if task.get('userId') == int(userId) and task.get('completed')]))
